@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>LM0702 | Creator Profile</title>
+<meta name="description" content="LM0702 - Creator, Dreamer, Developer. Check out my digital universe.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="LM0702 | Creator Profile">
+<meta property="og:description" content="Building amazing ideas and digital experiences.">
+<meta property="og:image" content="pfp.jpg"> <meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="pfp.jpg">
+<meta name="theme-color" content="#0f172a">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script type="text/javascript">
+    (function(){
+        emailjs.init("Z1ra9H38Wjw3ZADCg");
+    })();
+</script>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    outline: none;
+}
+
+body {
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+    background: #000;
+}
+
+/* ⭐ 4. PRELOADER STYLES */
+#preloader {
+    position: fixed;
+    inset: 0;
+    background: #000;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.6s ease;
+}
+
+#preloader.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid rgba(255,255,255,0.1);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin { 
+    to { transform: rotate(360deg); } 
+}
+
+/* ============================ */
+/* GLOBAL BACKGROUND            */
+/* ============================ */
+.video-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+}
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.15);
+    z-index: -1;
+}
+
+/* ============================ */
+/* GENERIC GLASS PAGE STYLES    */
+/* ============================ */
+.sub-page {
+    position: fixed;
+    inset: 0;
+    z-index: 850;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.sub-page.hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.95) translateY(20px);
+}
+
+.page-header {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.glass-panel {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 24px;
+    padding: 40px 30px;
+    width: min(90vw, 400px);
+    color: white;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3), inset 0 0 20px rgba(255,255,255,0.05);
+    text-align: center;
+}
+
+.glass-panel h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+.glass-panel p {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.action-btn {
+    background: white;
+    color: black;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(255,255,255,0.2);
+    width: 100%;
+}
+
+.action-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255,255,255,0.3);
+}
+
+/* Form Styles */
+.glass-input {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 14px 18px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.glass-input::placeholder { color: rgba(255,255,255,0.5); }
+.glass-input:focus { border-color: rgba(255,255,255,0.6); background: rgba(0,0,0,0.5); }
+textarea.glass-input { resize: none; height: 120px; }
+
+/* ⭐ 5. TOAST NOTIFICATION STYLES */
+.toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: rgba(20, 20, 20, 0.85);
+    color: white;
+    padding: 14px 28px;
+    border-radius: 30px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border: 1px solid rgba(255,255,255,0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 10000;
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s ease;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.toast.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+
+.toast.success { border-color: #4CAF50; color: #4CAF50; }
+.toast.error { border-color: #F44336; color: #F44336; }
+
+
+/* ============================ */
+/* STARTING PAGE                */
+/* ============================ */
+#start-page { position: fixed; inset: 0; z-index: 999; display: flex; flex-direction: column; justify-content: center; align-items: center; background: #000; transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.8s ease; }
+#start-page.hidden { transform: translateY(-100%); opacity: 0; pointer-events: none; }
+.start-video-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
+.start-overlay { position: absolute; inset: 0; background: rgba(0, 0, 0, 0.5); z-index: -1; }
+.top-left-brand { position: absolute; top: 40px; left: 40px; color: white; font-size: 1.1rem; font-weight: 400; letter-spacing: 3px; text-transform: uppercase; display: flex; align-items: center; gap: 12px; z-index: 10; animation: fadeIn 2s ease-in-out; text-shadow: 0 4px 15px rgba(0,0,0,0.6); opacity: 0.9; }
+.top-left-brand i { font-size: 1.2rem; color: rgba(255, 255, 255, 0.8); filter: drop-shadow(0 0 5px rgba(255,255,255,0.4)); }
+.start-content { text-align: center; color: white; padding: 20px; animation: fadeIn 2s ease-in-out; margin-bottom: 80px; }
+.start-content h1 { font-size: 4rem; font-weight: 700; letter-spacing: 4px; text-shadow: 0 4px 15px rgba(0,0,0,0.6); }
+.start-content p { font-size: 1.2rem; font-weight: 300; margin-top: 10px; color: rgba(255, 255, 255, 0.8); }
+.swipe-wrapper { position: absolute; bottom: 50px; width: 100%; display: flex; justify-content: center; padding: 0 20px; animation: fadeIn 2.5s ease-in-out; }
+.swipe-container { width: min(100%, 340px); height: 64px; background: rgba(20, 20, 20, 0.4); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 40px; position: relative; display: flex; align-items: center; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+.swipe-text { position: absolute; width: 100%; text-align: center; color: rgba(255, 255, 255, 0.7); font-size: 0.95rem; font-weight: 400; letter-spacing: 0.5px; pointer-events: none; z-index: 1; transition: opacity 0.2s; }
+.swipe-btn { width: 52px; height: 52px; border-radius: 50%; background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.2); color: white; display: flex; justify-content: center; align-items: center; position: absolute; left: 6px; cursor: grab; z-index: 2; transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+.swipe-btn i { font-size: 1.1rem; opacity: 0.9; }
+.swipe-btn.dragging { transition: none; cursor: grabbing; background: rgba(255, 255, 255, 0.25); }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ============================ */
+/* MENU PAGE                    */
+/* ============================ */
+#menu-page { position: fixed; inset: 0; z-index: 900; display: flex; flex-direction: column; justify-content: center; align-items: center; background: rgba(0, 0, 0, 0.45); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+#menu-page.hidden { opacity: 0; pointer-events: none; transform: scale(0.95); }
+.menu-title { color: white; font-size: 2.2rem; font-weight: 600; letter-spacing: 2px; margin-bottom: 40px; text-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+.menu-list { display: flex; flex-direction: column; gap: 18px; width: min(90vw, 360px); }
+.menu-item { background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); padding: 20px 25px; border-radius: 20px; color: white; text-decoration: none; font-size: 1.1rem; font-weight: 500; letter-spacing: 1px; display: flex; align-items: center; justify-content: space-between; transition: all 0.3s ease; box-shadow: 0 8px 25px rgba(0,0,0,0.2); }
+.menu-item:hover { background: rgba(255, 255, 255, 0.15); transform: translateX(10px); border-color: rgba(255, 255, 255, 0.3); }
+.menu-item i { font-size: 1.3rem; opacity: 0.8; }
+
+/* ============================ */
+/* MAIN PAGE HEADER             */
+/* ============================ */
+.main-header { position: fixed; top: 0; left: 0; width: 100%; height: 80px; display: flex; justify-content: space-between; align-items: center; padding: 0 30px; z-index: 100; background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, transparent 100%); transition: opacity 0.5s ease; }
+.main-header.hidden { opacity: 0; pointer-events: none; }
+.header-title { color: white; font-size: 1.2rem; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; text-shadow: 0 2px 10px rgba(0,0,0,0.5); pointer-events: none; }
+.nav-btn { width: 45px; height: 45px; border-radius: 12px; background: rgba(25, 25, 25, 0.3); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.15); display: flex; justify-content: center; align-items: center; color: white; font-size: 1.2rem; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+.nav-btn:hover { background: rgba(255, 255, 255, 0.15); transform: translateY(-2px); }
+.dropdown-menu { position: absolute; top: 75px; left: 30px; background: rgba(20, 20, 20, 0.65); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 16px; padding: 10px 0; list-style: none; min-width: 220px; opacity: 0; pointer-events: none; transform: translateY(-15px); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
+.dropdown-menu.show { opacity: 1; pointer-events: auto; transform: translateY(0); }
+.dropdown-menu li a { color: rgba(255, 255, 255, 0.85); padding: 12px 25px; display: flex; align-items: center; gap: 12px; text-decoration: none; font-size: 0.95rem; font-weight: 400; transition: all 0.2s; letter-spacing: 0.5px; }
+.dropdown-menu li a:hover { background: rgba(255, 255, 255, 0.1); color: white; padding-left: 30px; }
+
+/* ============================ */
+/* MAIN PROFILE CARD            */
+/* ============================ */
+.container { width: 100%; height: 100vh; display: flex; justify-content: center; align-items: center; perspective: 2500px; }
+.card { width: min(92vw, 420px); height: 620px; position: relative; transform-style: preserve-3d; cursor: grab; transition: opacity 0.5s ease; }
+.card.hidden { opacity: 0; pointer-events: none; }
+.side { position: absolute; inset: 0; border-radius: 35px; backface-visibility: hidden; -webkit-backface-visibility: hidden; display: flex; flex-direction: column; justify-content: center; align-items: center; background: rgba(255,255,255,0.03); backdrop-filter: blur(24px); border: 1px solid rgba(255,255,255,0.12); box-shadow: 0 10px 40px rgba(0,0,0,.25), inset 0 0 25px rgba(255,255,255,.04); overflow: hidden; }
+.side::before { content: ""; position: absolute; width: 200%; height: 200%; background: linear-gradient(120deg, transparent 20%, rgba(255,255,255,.12) 50%, transparent 80%); animation: shine 8s linear infinite; }
+@keyframes shine { from { transform: translateX(-100%) translateY(-100%); } to { transform: translateX(100%) translateY(100%); } }
+.back { transform: rotateY(180deg); }
+.back h1 { color: white; font-size: 4rem; font-weight: 700; letter-spacing: 5px; text-shadow: 0 0 25px rgba(255,255,255,.5); }
+.pfp { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 3px solid rgba(255,255,255,.3); box-shadow: 0 0 25px rgba(255,255,255,.25); }
+.name { margin-top: 20px; color: white; font-size: 2rem; font-weight: 700; }
+.bio { margin-top: 12px; color: rgba(255,255,255,.85); text-align: center; max-width: 80%; line-height: 1.6; }
+.socials { margin-top: 30px; display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; width: 80%; }
+.socials a { width: 52px; height: 52px; border-radius: 16px; display: flex; justify-content: center; align-items: center; color: white; text-decoration: none; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.08); backdrop-filter: blur(10px); transition: .3s; position: relative; overflow: hidden; }
+.socials a:hover { transform: translateY(-6px); background: rgba(255,255,255,.12); }
+.socials i { font-size: 20px; }
+.stars { margin-top: 28px; display: flex; gap: 12px; }
+.star { font-size: 22px; color: rgba(255,255,255,.75); cursor: pointer; transition: .3s; text-shadow: 0 0 10px rgba(255,255,255,.3); filter: drop-shadow(0 0 6px rgba(255,255,255,.4)); }
+.star:hover { transform: scale(1.25); color: #ffffff; text-shadow: 0 0 18px rgba(255,255,255,.9); }
+.ripple { position: absolute; border-radius: 50%; transform: scale(0); animation: rippleAnim 600ms linear; background: rgba(255,255,255,0.35); pointer-events: none; }
+@keyframes rippleAnim { to { transform: scale(4); opacity: 0; } }
+
+@media(max-width: 480px) {
+    .card { height: 580px; } .pfp { width: 120px; height: 120px; } .name { font-size: 1.6rem; } .back h1 { font-size: 3rem; }
+    .start-content h1 { font-size: 3rem; } .top-left-brand, .page-header { top: 25px; left: 25px; font-size: 0.9rem; } 
+    .main-header { padding: 0 20px; } .dropdown-menu { left: 20px; } .header-title { font-size: 1rem; }
+}
+</style>
+</head>
+
+<body>
+
+<div id="preloader">
+    <div class="spinner"></div>
+</div>
+
+<div id="start-page">
+    <video class="start-video-bg" autoplay muted loop playsinline poster="Startinbg.jpg">
+        <source src="Background.mp4" type="video/mp4">
+    </video>
+    <div class="start-overlay"></div>
+    
+    <div class="top-left-brand">
+        <i class="fas fa-layer-group"></i>
+        <span>LM0702</span>
+    </div>
+
+    <div class="start-content">
+        <h1>Hello!</h1>
+        <p>Step into my digital universe.</p>
+    </div>
+
+    <div class="swipe-wrapper">
+        <div class="swipe-container" id="swipe-container">
+            <span class="swipe-text" id="swipe-text">Swipe To Start</span>
+            <div class="swipe-btn" id="swipe-btn">
+                <i class="fas fa-arrow-right"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="menu-page" class="hidden">
+    <div class="page-header">
+        <div class="nav-btn nav-back" data-target="start-page">
+            <i class="fas fa-arrow-left"></i>
+        </div>
+    </div>
+
+    <h2 class="menu-title">Explore</h2>
+
+    <div class="menu-list">
+        <a href="#" class="menu-item link-profile">
+            <span>Creator profile</span>
+            <i class="fas fa-user"></i>
+        </a>
+        <a href="#" class="menu-item link-buy">
+            <span>Buy template</span>
+            <i class="fas fa-shopping-cart"></i>
+        </a>
+        <a href="#" class="menu-item link-demo">
+            <span>Live template demo</span>
+            <i class="fas fa-play-circle"></i>
+        </a>
+        <a href="#" class="menu-item link-contact">
+            <span>Contact</span>
+            <i class="fas fa-envelope"></i>
+        </a>
+        <a href="#" class="menu-item link-about">
+            <span>About</span>
+            <i class="fas fa-info-circle"></i>
+        </a>
+    </div>
+</div>
+
+<header class="main-header hidden" id="main-header">
+    <div class="nav-btn" id="burger-btn">
+        <i class="fas fa-bars"></i>
+    </div>
+    
+    <h2 class="header-title">Creator Profile</h2>
+    
+    <div class="nav-btn nav-back" data-target="menu-page">
+        <i class="fas fa-arrow-left"></i>
+    </div>
+
+    <ul class="dropdown-menu" id="dropdown-menu">
+        <li><a href="#" class="link-buy"><i class="fas fa-shopping-cart"></i> Buy template</a></li>
+        <li><a href="#" class="link-demo"><i class="fas fa-play-circle"></i> Live demo</a></li>
+        <li><a href="#" class="link-contact"><i class="fas fa-envelope"></i> Contact</a></li>
+        <li><a href="#" class="link-about"><i class="fas fa-info-circle"></i> About</a></li>
+    </ul>
+</header>
+
+<video class="video-bg" autoplay muted loop playsinline>
+    <source src="Background.mp4" type="video/mp4">
+</video>
+
+<div class="overlay"></div>
+
+<div class="container">
+    <div class="card hidden" id="card">
+        <div class="side front">
+            <img src="pfp.jpg" class="pfp">
+            <h1 class="name">LM0702</h1>
+            <p class="bio">
+                Creator • Dreamer • Developer <br>
+                Building amazing ideas and digital experiences.
+            </p>
+
+            <div class="socials">
+                <a href="https://www.tiktok.com/@lm0702_?_r=1&_t=ZS-96pxi6CvqdM" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.instagram.com/lm0702_?igsh=MWxlMXkxOHB6dnQwaA==" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="Snapchat"><i class="fab fa-snapchat"></i></a>
+                <a href="#" aria-label="Discord"><i class="fab fa-discord"></i></a>
+                <a href="#" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+                <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+
+            <div class="stars">
+                <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+            </div>
+        </div>
+
+        <div class="side back">
+            <h1>LM0702</h1>
+        </div>
+    </div>
+</div>
+
+<div id="buy-page" class="sub-page hidden">
+    <div class="page-header">
+        <div class="nav-btn nav-back" data-target="menu-page"><i class="fas fa-arrow-left"></i></div>
+    </div>
+    <div class="glass-panel">
+        <h2>Premium Template</h2>
+        <p>Unlock the full source code for this stunning 3D glassmorphism profile card. Fully responsive, heavily animated, and easy to customize.</p>
+        
+        <div style="display: flex; flex-direction: column; gap: 15px;">
+            <button class="action-btn" onclick="window.open('#', '_blank')">Buy Now - $9</button>
+            <button class="action-btn" style="background: rgba(255, 255, 255, 0.1); color: white; border: 1px solid rgba(255, 255, 255, 0.3); box-shadow: none;" onclick="window.open('#', '_blank')">
+                <i class="fas fa-play-circle" style="margin-right: 8px;"></i> Live Demo
+            </button>
+        </div>
+    </div>
+</div>
+
+<div id="contact-page" class="sub-page hidden">
+    <div class="page-header">
+        <div class="nav-btn nav-back" data-target="menu-page"><i class="fas fa-arrow-left"></i></div>
+    </div>
+    <div class="glass-panel">
+        <h2>Let's Connect</h2>
+        <p style="margin-bottom: 15px;">Have an idea or a project in mind? Reach out below.</p>
+        <form id="contact-form">
+            <input type="text" id="user_name" name="user_name" class="glass-input" placeholder="Your Name" required>
+            <input type="email" id="user_email" name="user_email" class="glass-input" placeholder="Your Email" required>
+            <textarea id="message" name="message" class="glass-input" placeholder="Your Message..." required></textarea>
+            <button type="submit" class="action-btn" id="submit-btn">Send Message</button>
+        </form>
+    </div>
+</div>
+
+<div id="about-page" class="sub-page hidden">
+    <div class="page-header">
+        <div class="nav-btn nav-back" data-target="menu-page"><i class="fas fa-arrow-left"></i></div>
+    </div>
+    <div class="glass-panel">
+        <h2>About This Project</h2>
+        <p>This is an interactive digital portfolio built to showcase modern web capabilities. It features a sleek glassmorphism design system, native-feeling swipe gestures, and a mathematically accurate 3D tilt card.</p>
+        <p>Built completely from scratch using vanilla HTML, CSS, and JavaScript. No heavy frameworks required.</p>
+    </div>
+</div>
+
+<div id="toast" class="toast">Message Sent Successfully!</div>
+
+<script>
+// --- PRELOADER LOGIC ---
+window.addEventListener('load', () => {
+    const preloader = document.getElementById('preloader');
+    preloader.classList.add('fade-out');
+    // Remove from DOM after transition completes to save memory
+    setTimeout(() => preloader.remove(), 600);
+});
+
+// --- TOAST NOTIFICATION LOGIC ---
+function showToast(message, type = 'success') {
+    const toast = document.getElementById('toast');
+    toast.textContent = message;
+    toast.className = `toast show ${type}`;
+    
+    // Hide after 3.5 seconds
+    setTimeout(() => {
+        toast.classList.remove('show');
+    }, 3500);
+}
+
+// --- DOM ELEMENTS FOR ROUTING ---
+const pages = {
+    'start-page': document.getElementById('start-page'),
+    'menu-page': document.getElementById('menu-page'),
+    'main-profile': [document.getElementById('main-header'), document.getElementById('card')],
+    'buy-page': document.getElementById('buy-page'),
+    'contact-page': document.getElementById('contact-page'),
+    'about-page': document.getElementById('about-page')
+};
+
+function hideAllPages() {
+    Object.values(pages).forEach(page => {
+        if(Array.isArray(page)) {
+            page.forEach(el => el.classList.add('hidden'));
+        } else {
+            page.classList.add('hidden');
+        }
+    });
+}
+
+function showPage(targetId) {
+    hideAllPages();
+    if(Array.isArray(pages[targetId])) {
+        pages[targetId].forEach(el => el.classList.remove('hidden'));
+    } else {
+        pages[targetId].classList.remove('hidden');
+    }
+}
+
+// DROPDOWN MENU LOGIC
+const burgerBtn = document.getElementById('burger-btn');
+const dropdownMenu = document.getElementById('dropdown-menu');
+
+burgerBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    dropdownMenu.classList.toggle('show');
+});
+
+document.addEventListener('click', (e) => {
+    if (!burgerBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
+        dropdownMenu.classList.remove('show');
+    }
+});
+
+// BACK BUTTONS
+document.querySelectorAll('.nav-back').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const target = btn.getAttribute('data-target');
+        showPage(target);
+        dropdownMenu.classList.remove('show');
+        
+        if(target === 'start-page') {
+            currentTranslate = 0;
+            swipeBtn.style.transform = `translateX(0px)`;
+            swipeText.style.opacity = 1;
+        }
+    });
+});
+
+// ROUTING CLICKS
+document.querySelectorAll('.link-profile').forEach(btn => {
+    btn.addEventListener('click', (e) => { e.preventDefault(); showPage('main-profile'); });
+});
+document.querySelectorAll('.link-buy').forEach(btn => {
+    btn.addEventListener('click', (e) => { e.preventDefault(); showPage('buy-page'); dropdownMenu.classList.remove('show'); });
+});
+document.querySelectorAll('.link-contact').forEach(btn => {
+    btn.addEventListener('click', (e) => { e.preventDefault(); showPage('contact-page'); dropdownMenu.classList.remove('show'); });
+});
+document.querySelectorAll('.link-about').forEach(btn => {
+    btn.addEventListener('click', (e) => { e.preventDefault(); showPage('about-page'); dropdownMenu.classList.remove('show'); });
+});
+document.querySelectorAll('.link-demo').forEach(btn => {
+    btn.addEventListener('click', (e) => { e.preventDefault(); dropdownMenu.classList.remove('show'); });
+});
+
+// --- START PAGE SWIPE LOGIC ---
+const swipeContainer = document.getElementById('swipe-container');
+const swipeBtn = document.getElementById('swipe-btn');
+const swipeText = document.getElementById('swipe-text');
+
+let isSwiping = false, startX = 0, currentTranslate = 0;
+
+function handleSwipeStart(e) {
+    isSwiping = true;
+    startX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+    swipeBtn.classList.add('dragging');
+}
+
+function handleSwipeMove(e) {
+    if (!isSwiping) return;
+    if(e.cancelable) e.preventDefault(); 
+    const currentX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+    const walk = currentX - startX;
+    const maxTranslate = swipeContainer.offsetWidth - swipeBtn.offsetWidth - 12;
+
+    currentTranslate = Math.max(0, Math.min(walk, maxTranslate));
+    swipeBtn.style.transform = `translateX(${currentTranslate}px)`;
+    swipeText.style.opacity = 1 - (currentTranslate / maxTranslate);
+}
+
+function handleSwipeEnd() {
+    if (!isSwiping) return;
+    isSwiping = false;
+    swipeBtn.classList.remove('dragging');
+    const maxTranslate = swipeContainer.offsetWidth - swipeBtn.offsetWidth - 12;
+
+    if (currentTranslate >= maxTranslate * 0.85) {
+        swipeBtn.style.transform = `translateX(${maxTranslate}px)`;
+        setTimeout(() => {
+            showPage('menu-page');
+            currentTranslate = 0;
+            swipeBtn.style.transform = `translateX(0px)`;
+            swipeText.style.opacity = 1;
+        }, 150);
+    } else {
+        currentTranslate = 0;
+        swipeBtn.style.transform = `translateX(0px)`;
+        swipeText.style.opacity = 1;
+    }
+}
+
+swipeBtn.addEventListener('mousedown', handleSwipeStart);
+document.addEventListener('mousemove', handleSwipeMove, { passive: false });
+document.addEventListener('mouseup', handleSwipeEnd);
+swipeBtn.addEventListener('touchstart', handleSwipeStart);
+document.addEventListener('touchmove', handleSwipeMove, { passive: false });
+document.addEventListener('touchend', handleSwipeEnd);
+
+
+// --- CARD DRAG LOGIC ---
+const card = document.getElementById('card');
+let isCardDragging = false, cardX = 0, cardY = 0, lastCardTouchX = 0, lastCardTouchY = 0;
+
+function isEdgeOn() {
+    let yAngle = cardY % 180, xAngle = cardX % 180;
+    if (yAngle < 0) yAngle += 180; if (xAngle < 0) xAngle += 180;
+    return Math.abs(yAngle - 90) < 25 || Math.abs(xAngle - 90) < 25;
+}
+
+card.addEventListener('mousedown', () => { isCardDragging = true; });
+document.addEventListener('mouseup', () => { isCardDragging = false; });
+document.addEventListener('mousemove', (e) => {
+    if (!isCardDragging) return;
+    cardY += e.movementX * 0.5; cardX -= e.movementY * 0.5;
+    card.style.transform = `rotateX(${cardX}deg) rotateY(${cardY}deg)`;
+});
+
+card.addEventListener('touchstart', (e) => {
+    isCardDragging = true;
+    lastCardTouchX = e.touches[0].clientX; lastCardTouchY = e.touches[0].clientY;
+});
+document.addEventListener('touchend', () => { isCardDragging = false; });
+document.addEventListener('touchmove', (e) => {
+    if (!isCardDragging) return;
+    const touch = e.touches[0];
+    cardY += (touch.clientX - lastCardTouchX) * 0.4;
+    cardX -= (touch.clientY - lastCardTouchY) * 0.4;
+    card.style.transform = `rotateX(${cardX}deg) rotateY(${cardY}deg)`;
+    lastCardTouchX = touch.clientX; lastCardTouchY = touch.clientY;
+});
+document.addEventListener('mousedown', () => {
+    if (isEdgeOn() && !card.classList.contains('hidden')) isCardDragging = true;
+});
+document.addEventListener('touchstart', (e) => {
+    if (isEdgeOn() && !card.classList.contains('hidden')) {
+        isCardDragging = true;
+        lastCardTouchX = e.touches[0].clientX; lastCardTouchY = e.touches[0].clientY;
+    }
+});
+
+
+// --- RIPPLE EFFECT ---
+document.querySelectorAll(".socials a").forEach(btn => {
+    btn.addEventListener("click", function(e) {
+        const ripple = document.createElement("span");
+        ripple.classList.add("ripple");
+        const rect = this.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        ripple.style.width = ripple.style.height = size + "px";
+        const x = e.clientX - rect.left - size / 2;
+        const y = e.clientY - rect.top - size / 2;
+        ripple.style.left = x + "px";
+        ripple.style.top = y + "px";
+        this.appendChild(ripple);
+        setTimeout(() => ripple.remove(), 600);
+    });
+});
+
+// --- EMAIL JS FORM SUBMISSION WITH TOAST ---
+document.getElementById('contact-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const btn = document.getElementById('submit-btn');
+    const originalText = btn.innerText;
+    btn.innerText = "Sending...";
+    btn.disabled = true;
+
+    // Replace YOUR_SERVICE_ID and YOUR_TEMPLATE_ID
+    emailjs.sendForm('service_n1oydnm', 'template_886sadl', this)
+        .then(function() {
+            showToast("Message Sent Successfully!", "success");
+            btn.innerText = originalText;
+            btn.disabled = false;
+            document.getElementById('contact-form').reset();
+        }, function(error) {
+            showToast("Failed to send. Please try again.", "error");
+            btn.innerText = originalText;
+            btn.disabled = false;
+        });
+});
+// Disable Right Click
+document.addEventListener('contextmenu', event => event.preventDefault());
+
+// Disable Keyboard Shortcuts for Inspect/Copy
+document.addEventListener('keydown', (e) => {
+    if (e.keyCode === 123 || 
+        (e.ctrlKey && e.shiftKey && (e.keyCode === 'I'.charCodeAt(0) || e.keyCode === 'C'.charCodeAt(0))) ||
+        (e.ctrlKey && (e.keyCode === 'U'.charCodeAt(0) || e.keyCode === 'S'.charCodeAt(0) || e.keyCode === 'C'.charCodeAt(0)))) {
+        e.preventDefault();
+        return false;
+    }
+});
+</script>
+<footer style="position: absolute; bottom: 10px; width: 100%; text-align: center; color: rgba(255,255,255,0.3); font-size: 0.7rem; z-index: 100;">
+    &copy; 2026 LM0702. All rights reserved. Unauthorized copying is prohibited.
+</footer>
+</body>
+</html>
